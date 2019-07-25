@@ -38,15 +38,20 @@ def hide(filename, message):
 		datas = img.getdata()
 		newData = []
 		count = 0
+		message_end = False
 		for data in datas:
-			newpix = []
-			for num in data:
-				if count < len(binary):
-					newpix.append(encode(num, binary[count]))
-					count += 1
-				else:
-					newpix.append(num)
-			newData.append(tuple(newpix))
+			if not message_end:
+				newpix = []
+				for num in data :
+					if count < len(binary):
+						newpix.append(encode(num, binary[count]))
+						count += 1
+					else:
+						newpix.append(num)
+						message_end = True
+				newData.append(tuple(newpix))
+			else:
+				break
 		img.putdata(newData)
 		img.save(filename, "PNG")
 		return "Completed!"
