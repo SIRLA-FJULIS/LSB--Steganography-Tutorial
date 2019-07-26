@@ -74,7 +74,7 @@ def retr(filename):
     return "Incorrect Image Mode, couldn't retrieve :("
 
 def main():
-    parser = optparse.OptionParser('usage ' + '-e/-d <target file>')
+    parser = optparse.OptionParser('python lsbsteg.py ' + '-e/-d <target file>')
     parser.add_option('-e', dest = 'hide', type='string', help='target pic path to hide text')
     parser.add_option('-d', dest = 'retr', type='string', help='target pic path to retrieve text')
     (options, args) = parser.parse_args()
